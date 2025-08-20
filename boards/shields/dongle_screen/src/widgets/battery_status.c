@@ -49,7 +49,7 @@ static void draw_battery(lv_obj_t *canvas, uint8_t level, bool usb_present) {
     } else if (level <= 10) {
         lv_canvas_fill_bg(canvas, lv_palette_main(LV_PALETTE_YELLOW), LV_OPA_COVER);
     } else {
-        lv_canvas_fill_bg(canvas, lv_color_white(), LV_OPA_COVER);
+        lv_canvas_fill_bg(canvas, lv_palette_main(LV_PALETTE_GREEN), LV_OPA_COVER);
     }
 
     
