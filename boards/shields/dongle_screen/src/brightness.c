@@ -9,6 +9,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+#include "widgets/ime_status.h"
+
 int random0to100()
 {
     return rand() % 101; // 0 to 100
@@ -469,6 +471,19 @@ static int key_listener(const zmk_event_t *eh)
             return 0;
         }
 
+#endif
+
+#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
+        if (ev->keycode == HID_USAGE_KEY_KEYBOARD_LANG1)
+        {
+            ime_status_update(IME_STATUS_ON);
+            return 0;
+        }
+        else if (ev->keycode == HID_USAGE_KEY_KEYBOARD_LANG2)
+        {
+            ime_status_update(IME_STATUS_OFF);
+            return 0;
+        }
 #endif
     }
 

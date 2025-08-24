@@ -26,6 +26,11 @@ static struct zmk_widget_dongle_battery_status dongle_battery_status_widget;
 static struct zmk_widget_wpm_status wpm_status_widget;
 #endif
 
+#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
+#include "widgets/ime_status.h"
+static struct zmk_widget_ime_status ime_status_widget;
+#endif
+
 #if CONFIG_DONGLE_SCREEN_MODIFIER_ACTIVE
 #include "widgets/mod_status.h"
 static struct zmk_widget_mod_status mod_widget;
@@ -64,6 +69,11 @@ lv_obj_t *zmk_display_status_screen()
 #if CONFIG_DONGLE_SCREEN_WPM_ACTIVE
     zmk_widget_wpm_status_init(&wpm_status_widget, screen);
     lv_obj_align(zmk_widget_wpm_status_obj(&wpm_status_widget), LV_ALIGN_TOP_LEFT, 20, 20);
+#endif
+
+#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
+    zmk_widget_ime_status_init(&ime_status_widget, screen);
+    lv_obj_align(zmk_widget_ime_status_obj(&ime_status_widget), LV_ALIGN_TOP_LEFT, 20, 20);
 #endif
 
 #if CONFIG_DONGLE_SCREEN_LAYER_ACTIVE
