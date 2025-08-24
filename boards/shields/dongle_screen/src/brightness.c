@@ -473,7 +473,7 @@ static int key_listener(const zmk_event_t *eh)
 
 #endif
 
-#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
+//#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
         if (ev->keycode == HID_USAGE_KEY_KEYBOARD_LANG1)
         {
             ime_status_update(IME_STATUS_ON);
@@ -484,7 +484,7 @@ static int key_listener(const zmk_event_t *eh)
             ime_status_update(IME_STATUS_OFF);
             return 0;
         }
-#endif
+//#endif
     }
 
 #if CONFIG_DONGLE_SCREEN_IDLE_TIMEOUT_S > 0
