@@ -11,7 +11,6 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include <zmk/display.h>
 #include <zmk/event_manager.h>
-#include <zmk/events/ime_state_changed.h>
 
 #include "ime_status.h"
 #include <fonts.h>
