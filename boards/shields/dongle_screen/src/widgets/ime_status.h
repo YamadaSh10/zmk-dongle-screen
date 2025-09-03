@@ -31,8 +31,8 @@ struct zmk_widget_ime_status
 #define DOT_COLOR_YELLOW3 0xBA7E00
 #define DOT_COLOR_BACK DOT_COLOR_BLACK
 
-#define ILLUST_WIDTH 45
-#define ILLUST_HEIGHT 30
+#define ILLUST_WIDTH 280
+#define ILLUST_HEIGHT 240
 
 int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *parent);
 lv_obj_t *zmk_widget_ime_status_obj(struct zmk_widget_ime_status *widget);
