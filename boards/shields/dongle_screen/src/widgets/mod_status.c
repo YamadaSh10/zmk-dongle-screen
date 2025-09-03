@@ -5,6 +5,8 @@
 #include "mod_status.h"
 #include <fonts.h> // <-- Wichtig für LV_FONT_DECLARE
 
+#include "wpm_state.h"
+
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 static void update_mod_status(struct zmk_widget_mod_status *widget)
@@ -39,6 +41,7 @@ static void update_mod_status(struct zmk_widget_mod_status *widget)
 static void mod_status_timer_cb(struct k_timer *timer)
 {
     struct zmk_widget_mod_status *widget = k_timer_user_data_get(timer);
+    wpm_status_update_cb(MOD);
     update_mod_status(widget);
 }
 

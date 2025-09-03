@@ -30,15 +30,19 @@ static struct wpm_status_state get_state(const zmk_event_t *_eh)
         .wpm = ev ? ev->state : 0};
 }
 
-static void set_wpm(struct zmk_widget_wpm_status *widget, struct wpm_status_state state)
+static void set_wpm(struct zmk_widget_wpm_status *widget, unsigned char state)
 {
-
     char wpm_text[12];
-    snprintf(wpm_text, sizeof(wpm_text), "%i", state.wpm);
+    if(state == BATTERY) snprintf(wpm_text, sizeof(wpm_text), "%s","battery");
+    else if(state == LAYER) snprintf(wpm_text, sizeof(wpm_text), "%s","layer");
+    else if(state == MOD) snprintf(wpm_text, sizeof(wpm_text), "%s","mod");
+    else if(state == OUTPUT) snprintf(wpm_text, sizeof(wpm_text), "%s","output");
+    else if(state == BRIGHTNESS) snprintf(wpm_text, sizeof(wpm_text), "%s","brightness");
+    
     lv_label_set_text(widget->wpm_label, wpm_text);
 }
 
-static void wpm_status_update_cb(struct wpm_status_state state)
+void wpm_status_update_cb(unsigned char state)
 {
     struct zmk_widget_wpm_status *widget;
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node)
@@ -47,9 +51,9 @@ static void wpm_status_update_cb(struct wpm_status_state state)
     }
 }
 
-ZMK_DISPLAY_WIDGET_LISTENER(widget_wpm_status, struct wpm_status_state,
-                            wpm_status_update_cb, get_state)
-ZMK_SUBSCRIPTION(widget_wpm_status, zmk_wpm_state_changed);
+//ZMK_DISPLAY_WIDGET_LISTENER(widget_wpm_status, struct wpm_status_state,
+//                            wpm_status_update_cb, get_state)
+//ZMK_SUBSCRIPTION(widget_wpm_status, zmk_wpm_state_changed);
 
 // output_status.c
 int zmk_widget_wpm_status_init(struct zmk_widget_wpm_status *widget, lv_obj_t *parent)

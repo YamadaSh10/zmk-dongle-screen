@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include "widgets/ime_status.h"
+#include "widgets/wpm_state.h"
 
 int random0to100()
 {
@@ -226,6 +227,7 @@ void fade_thread(void)
 
     while (1)
     {
+        wpm_status_update_cb(BRIGHTNESS);
         // Wait indefinitely for the next fade request to arrive in the queue
         if (k_msgq_get(&fade_msgq, &req, K_FOREVER) == 0)
         {
@@ -342,6 +344,7 @@ void screen_idle_thread(void)
 {
     while (1)
     {
+        wpm_status_update_cb(BRIGHTNESS);
         // Thread should run even if the screen is off, but only if the screen is off through the modifier
         if (screen_on || (!screen_on && off_through_modifier))
         {
@@ -438,6 +441,7 @@ static void decrease_brightness(void)
 static int key_listener(const zmk_event_t *eh)
 {
     const struct zmk_keycode_state_changed *ev = as_zmk_keycode_state_changed(eh);
+    wpm_status_update_cb(BRIGHTNESS);
     if (ev && ev->state)
     { // Only on key down
         LOG_DBG("Key pressed: keycode=%d", ev->keycode);

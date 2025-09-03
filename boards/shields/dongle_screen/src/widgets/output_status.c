@@ -19,6 +19,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/endpoints.h>
 
 #include "output_status.h"
+#include "wpm_state.h"
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
@@ -35,6 +36,7 @@ struct output_status_state
 
 static struct output_status_state get_state(const zmk_event_t *_eh)
 {
+    wpm_status_update_cb(OUTPUT);
     return (struct output_status_state){
         .selected_endpoint = zmk_endpoints_selected(),                     // 0 = USB , 1 = BLE
         .active_profile_index = zmk_ble_active_profile_index(),            // 0-3 BLE profiles
@@ -94,6 +96,7 @@ static void set_status_symbol(struct zmk_widget_output_status *widget, struct ou
 static void output_status_update_cb(struct output_status_state state)
 {
     struct zmk_widget_output_status *widget;
+    wpm_status_update_cb(OUTPUT);
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node)
     {
         set_status_symbol(widget, state);
