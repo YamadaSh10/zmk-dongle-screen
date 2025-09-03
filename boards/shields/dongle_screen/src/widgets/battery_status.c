@@ -19,7 +19,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/usb.h>
 
 #include "battery_status.h"
-#include "wpm_state.h"
+#include "wpm_status.h"
 
 #if IS_ENABLED(CONFIG_ZMK_DONGLE_DISPLAY_DONGLE_BATTERY)
     #define SOURCE_OFFSET 1

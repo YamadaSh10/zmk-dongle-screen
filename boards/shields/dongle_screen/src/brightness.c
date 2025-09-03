@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 #include "widgets/ime_status.h"
-#include "widgets/wpm_state.h"
+#include "widgets/wpm_status.h"
 
 int random0to100()
 {
