@@ -75,7 +75,7 @@ int zmk_widget_wpm_status_init(struct zmk_widget_wpm_status *widget, lv_obj_t *p
 
     sys_slist_append(&widgets, &widget->node);
 
-    widget_wpm_status_init();
+    //widget_wpm_status_init();
     return 0;
 }
 
