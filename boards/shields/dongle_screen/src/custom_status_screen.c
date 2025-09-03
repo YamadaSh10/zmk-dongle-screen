@@ -72,8 +72,8 @@ lv_obj_t *zmk_display_status_screen()
 #endif
 
 //#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
-    //zmk_widget_ime_status_init(&ime_status_widget, screen);
-    //lv_obj_align(zmk_widget_ime_status_obj(&ime_status_widget), LV_ALIGN_TOP_LEFT, 20, 20);
+    zmk_widget_ime_status_init(&ime_status_widget, screen);
+    lv_obj_align(zmk_widget_ime_status_obj(&ime_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
 //#endif
 
 #if CONFIG_DONGLE_SCREEN_LAYER_ACTIVE
