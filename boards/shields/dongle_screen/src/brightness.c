@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include "widgets/ime_status.h"
+#include "custom_status_screen.h"
 
 int random0to100()
 {
@@ -315,14 +316,16 @@ static void screen_set_on(bool on)
             LOG_DBG("SCREEN TURN ON: Adjusted brightness to ensure screen can turn on: %d", current_brightness);
         }
 
-        fade_to_brightness(0, clamp_brightness(current_brightness + brightness_modifier));
+        //fade_to_brightness(0, clamp_brightness(current_brightness + brightness_modifier));
+        lv_scr_load(screen);
         screen_on = true;
         off_through_modifier = false; // Reset the flag, because the screen is turned on again
         LOG_INF("Screen on (smooth)");
     }
     else if (!on && screen_on)
     {
-        fade_to_brightness(clamp_brightness(current_brightness + brightness_modifier), 0);
+        //fade_to_brightness(clamp_brightness(current_brightness + brightness_modifier), 0);
+        lv_scr_load(sleep_screen);
         screen_on = false;
         LOG_INF("Screen off (smooth)");
     }

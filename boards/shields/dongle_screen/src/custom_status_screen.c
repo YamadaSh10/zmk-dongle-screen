@@ -40,14 +40,19 @@ static struct zmk_widget_mod_status mod_widget;
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 lv_style_t global_style;
+lv_obj_t *screen;
+lv_obj_t *sleep_screen;
 
 lv_obj_t *zmk_display_status_screen()
 {
-    lv_obj_t *screen;
 
     screen = lv_obj_create(NULL);
+    sleep_screen = lv_obj_create(NULL);
     lv_obj_set_style_bg_color(screen, lv_color_hex(0x000000), LV_PART_MAIN);
     lv_obj_set_style_bg_opa(screen, 255, LV_PART_MAIN);
+
+    lv_obj_set_style_bg_color(sleep_screen, lv_color_hex(0xFEFEFE), LV_PART_MAIN);
+    lv_obj_set_style_bg_opa(sleep_screen, 255, LV_PART_MAIN);
 
     lv_style_init(&global_style);
     // lv_style_set_text_font(&global_style, &lv_font_unscii_8); // ToDo: Font is not recognized
@@ -72,8 +77,8 @@ lv_obj_t *zmk_display_status_screen()
 #endif
 
 //#if CONFIG_DONGLE_SCREEN_IME_ACTIVE
-    zmk_widget_ime_status_init(&ime_status_widget, screen);
-    lv_obj_align(zmk_widget_ime_status_obj(&ime_status_widget), LV_ALIGN_TOP_LEFT, 0, 0);
+    zmk_widget_ime_status_init(&ime_status_widget, sleep_screen);
+    lv_obj_align(zmk_widget_ime_status_obj(&ime_status_widget), LV_ALIGN_CENTER, 0, 0);
 //#endif
 
 #if CONFIG_DONGLE_SCREEN_LAYER_ACTIVE

@@ -10,3 +10,5 @@
 #include <lvgl.h>
 
 lv_obj_t *zmk_display_status_screen();
+extern lv_obj_t *screen;
+extern lv_obj_t *sleep_screen;
