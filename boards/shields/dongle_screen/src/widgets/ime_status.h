@@ -38,3 +38,4 @@ int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *p
 lv_obj_t *zmk_widget_ime_status_obj(struct zmk_widget_ime_status *widget);
 extern void ime_status_update(ime_status_state state);
 extern const unsigned char blue_ham_ham_mini_left_map[];
+extern const unsigned char blue_ham_ham_mini_right_map[];

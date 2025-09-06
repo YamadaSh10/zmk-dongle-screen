@@ -91,6 +91,16 @@ const lv_img_dsc_t blue_ham_ham_mini_left = {
   .data_size = 1816,
   .data = blue_ham_ham_mini_left_map,
 };
+const lv_img_dsc_t blue_ham_ham_mini_right = {
+  .header.cf = LV_IMG_CF_INDEXED_2BIT,
+  .header.always_zero = 0,
+  .header.reserved = 0,
+  .header.w = 78,
+  .header.h = 90,
+  .data_size = 1816,
+  .data = blue_ham_ham_mini_right_map,
+};
+
 
 static void set_ime(struct zmk_widget_ime_status *widget, ime_status_state state)
 {
@@ -114,16 +124,17 @@ void ime_status_update(ime_status_state state)
 int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *parent)
 {
     widget->obj = lv_obj_create(parent);
-    lv_obj_set_size(widget->obj, ILLUST_WIDTH, ILLUST_HEIGHT);
+    lv_obj_set_size(widget->obj, ILLUST_WIDTH*2, ILLUST_HEIGHT);
 
     lv_obj_t *image_canvas = lv_canvas_create(widget->obj);
-    lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH*2, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
 
     lv_draw_img_dsc_t img_dsc;
     lv_draw_img_dsc_init(&img_dsc);
     img_dsc.opa = LV_OPA_COVER;  // 不透明度100%
 
     lv_canvas_draw_img(image_canvas, 0, 0, &blue_ham_ham_mini_left, &img_dsc);
+    lv_canvas_draw_img(image_canvas, ILLUST_WIDTH, 0, &blue_ham_ham_mini_right, &img_dsc);
     lv_obj_align(image_canvas, LV_ALIGN_TOP_LEFT, 0, 0);
     /*
     for(int i=0; i<ILLUST_WIDTH; i++)
