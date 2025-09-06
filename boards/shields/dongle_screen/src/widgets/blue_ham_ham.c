@@ -20,7 +20,7 @@
 #define LV_ATTRIBUTE_IMAGE_BLUE_HAM_HAM
 #endif
 
-const unsigned char blue_ham_ham_map[] = blue_ham_ham_map[] = {
+const unsigned char blue_ham_ham_map[] = {
   0xfe, 0xfe, 0xfe, 0xff, 	/*Color of index 0*/
   0xd8, 0xd8, 0xd8, 0xff, 	/*Color of index 1*/
   0xb7, 0xb7, 0xb7, 0xff, 	/*Color of index 2*/
