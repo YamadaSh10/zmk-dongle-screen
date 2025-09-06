@@ -83,12 +83,12 @@ static uint32_t illust_color_code[ILLUST_WIDTH * ILLUST_HEIGHT] =
 #endif
 static lv_color_t buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(ILLUST_WIDTH, ILLUST_HEIGHT)];
 const lv_img_dsc_t blue_ham_ham = {
-  .header.cf = LV_IMG_CF_INDEXED_8BIT,
+  .header.cf = LV_IMG_CF_INDEXED_2BIT,
   .header.always_zero = 0,
   .header.reserved = 0,
   .header.w = 280,
   .header.h = 240,
-  .data_size = 68224,
+  .data_size = 16816,
   .data = blue_ham_ham_map,
 };
 
