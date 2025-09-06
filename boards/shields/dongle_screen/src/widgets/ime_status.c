@@ -81,7 +81,8 @@ static uint32_t illust_color_code[ILLUST_WIDTH * ILLUST_HEIGHT] =
     //DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BLACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK, DOT_COLOR_BACK
 };
 #endif
-static lv_color_t buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(ILLUST_WIDTH, ILLUST_HEIGHT)];
+static lv_color_t buffer_left[LV_CANVAS_BUF_SIZE_TRUE_COLOR(ILLUST_WIDTH, ILLUST_HEIGHT)];
+static lv_color_t buffer_right[LV_CANVAS_BUF_SIZE_TRUE_COLOR(ILLUST_WIDTH, ILLUST_HEIGHT)];
 const lv_img_dsc_t blue_ham_ham_mini_left = {
   .header.cf = LV_IMG_CF_INDEXED_2BIT,
   .header.always_zero = 0,
@@ -126,16 +127,19 @@ int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *p
     widget->obj = lv_obj_create(parent);
     lv_obj_set_size(widget->obj, 280, 240);
 
-    lv_obj_t *image_canvas = lv_canvas_create(widget->obj);
-    lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH*2, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_obj_t *image_canvas_left = lv_canvas_create(widget->obj);
+    lv_obj_t *image_canvas_right = lv_canvas_create(widget->obj);
+    lv_canvas_set_buffer(image_canvas_left, buffer_left, ILLUST_WIDTH, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_canvas_set_buffer(image_canvas_right, buffer_right, ILLUST_WIDTH, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
 
     lv_draw_img_dsc_t img_dsc;
     lv_draw_img_dsc_init(&img_dsc);
     img_dsc.opa = LV_OPA_COVER;  // 不透明度100%
 
-    lv_canvas_draw_img(image_canvas, -ILLUST_WIDTH-ILLUST_WIDTH/2, 0, &blue_ham_ham_mini_left, &img_dsc);
-    lv_canvas_draw_img(image_canvas, ILLUST_WIDTH/2, 0, &blue_ham_ham_mini_right, &img_dsc);
-    lv_obj_align(image_canvas, LV_ALIGN_CENTER, 0, 0);
+    lv_canvas_draw_img(image_canvas_left, 0, 0, &blue_ham_ham_mini_left, &img_dsc);
+    lv_canvas_draw_img(image_canvas_right, 0, 0, &blue_ham_ham_mini_right, &img_dsc);
+    lv_obj_align(image_canvas_left, LV_ALIGN_CENTER, -ILLUST_WIDTH-ILLUST_WIDTH/2, 0);
+    lv_obj_align(image_canvas_right, LV_ALIGN_CENTER, ILLUST_WIDTH/2, 0);
     /*
     for(int i=0; i<ILLUST_WIDTH; i++)
     {
