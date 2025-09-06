@@ -127,7 +127,7 @@ int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *p
     lv_obj_set_size(widget->obj, 280, 240);
 
     lv_obj_t *image_canvas = lv_canvas_create(widget->obj);
-    lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH*2, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
+    lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH*3, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
 
     lv_draw_img_dsc_t img_dsc;
     lv_draw_img_dsc_init(&img_dsc);
