@@ -265,7 +265,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMAGE_BLUE_HA
 };
 
 const lv_img_dsc_t blue_ham_ham = {
-  .header.cf = LV_COLOR_FORMAT_RGB565,
+  .header.cf = LV_COLOR_FORMAT_NATIVE,
   .header.magic = LV_IMAGE_HEADER_MAGIC,
   .header.w = 280,
   .header.h = 240,
