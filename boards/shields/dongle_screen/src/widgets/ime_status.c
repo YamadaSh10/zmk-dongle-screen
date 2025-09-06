@@ -82,7 +82,14 @@ static uint32_t illust_color_code[ILLUST_WIDTH * ILLUST_HEIGHT] =
 };
 #endif
 static lv_color_t buffer[LV_CANVAS_BUF_SIZE_TRUE_COLOR(ILLUST_WIDTH, ILLUST_HEIGHT)];
-extern const lv_img_dsc_t blue_ham_ham;
+const lv_img_dsc_t blue_ham_ham = {
+  .header.cf = LV_COLOR_FORMAT_RGB565,
+  .header.magic = LV_IMAGE_HEADER_MAGIC,
+  .header.w = 280,
+  .header.h = 240,
+  .data_size = 67200 * 2,
+  .data = blue_ham_ham_map,
+};
 
 static void set_ime(struct zmk_widget_ime_status *widget, ime_status_state state)
 {
