@@ -124,7 +124,7 @@ void ime_status_update(ime_status_state state)
 int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *parent)
 {
     widget->obj = lv_obj_create(parent);
-    lv_obj_set_size(widget->obj, ILLUST_WIDTH*2, ILLUST_HEIGHT);
+    lv_obj_set_size(widget->obj, 280, 240);
 
     lv_obj_t *image_canvas = lv_canvas_create(widget->obj);
     lv_canvas_set_buffer(image_canvas, buffer, ILLUST_WIDTH*2, ILLUST_HEIGHT, LV_IMG_CF_TRUE_COLOR);
