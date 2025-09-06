@@ -6,11 +6,9 @@
     #endif
 #endif
 
-#if defined(LV_LVGL_H_INCLUDE_SIMPLE)
-    #include <lvgl.h>
-#else
-    #include <lvgl.h>
-#endif
+#include <zephyr/kernel.h>
+#include <lvgl_zephyr.h>
+#include <lvgl.h>
 
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
