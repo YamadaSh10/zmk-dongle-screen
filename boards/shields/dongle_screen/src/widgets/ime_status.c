@@ -133,9 +133,9 @@ int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *p
     lv_draw_img_dsc_init(&img_dsc);
     img_dsc.opa = LV_OPA_COVER;  // 不透明度100%
 
-    lv_canvas_draw_img(image_canvas, 0, 0, &blue_ham_ham_mini_left, &img_dsc);
-    lv_canvas_draw_img(image_canvas, ILLUST_WIDTH, 0, &blue_ham_ham_mini_right, &img_dsc);
-    lv_obj_align(image_canvas, LV_ALIGN_TOP_LEFT, 0, 0);
+    lv_canvas_draw_img(image_canvas, -ILLUST_WIDTH-ILLUST_WIDTH/2, 0, &blue_ham_ham_mini_left, &img_dsc);
+    lv_canvas_draw_img(image_canvas, ILLUST_WIDTH/2, 0, &blue_ham_ham_mini_right, &img_dsc);
+    lv_obj_align(image_canvas, LV_ALIGN_CENTER, 0, 0);
     /*
     for(int i=0; i<ILLUST_WIDTH; i++)
     {
