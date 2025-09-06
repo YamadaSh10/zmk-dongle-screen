@@ -31,10 +31,10 @@ struct zmk_widget_ime_status
 #define DOT_COLOR_YELLOW3 0xBA7E00
 #define DOT_COLOR_BACK DOT_COLOR_BLACK
 
-#define ILLUST_WIDTH 280
-#define ILLUST_HEIGHT 240
+#define ILLUST_WIDTH 78
+#define ILLUST_HEIGHT 90
 
 int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *parent);
 lv_obj_t *zmk_widget_ime_status_obj(struct zmk_widget_ime_status *widget);
 extern void ime_status_update(ime_status_state state);
-extern const unsigned char blue_ham_ham_map[];
+extern const unsigned char blue_ham_ham_mini_left_map[];
