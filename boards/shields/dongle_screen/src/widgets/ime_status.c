@@ -102,14 +102,15 @@ const lv_img_dsc_t blue_ham_ham_mini_right = {
 }; */
 
 const lv_img_dsc_t mentako_ya = {
-  .header.cf = LV_IMG_CF_ALPHA_1BIT,
+  .header.cf = LV_IMG_CF_INDEXED_1BIT,
   .header.always_zero = 0,
   .header.reserved = 0,
   .header.w = 90,
   .header.h = 90,
-  .data_size = 1080,
+  .data_size = 1088,
   .data = mentako_ya_map,
 };
+
 
 
 static void set_ime(struct zmk_widget_ime_status *widget, ime_status_state state)
