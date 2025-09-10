@@ -105,9 +105,9 @@ const lv_img_dsc_t Snoopy = {
   .header.cf = LV_IMG_CF_INDEXED_1BIT,
   .header.always_zero = 0,
   .header.reserved = 0,
-  .header.w = 158,
-  .header.h = 90,
-  .data_size = 1808,
+  .header.w = 100,
+  .header.h = 56,
+  .data_size = 736,
   .data = Snoopy_map,
 };
 
