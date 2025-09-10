@@ -101,14 +101,14 @@ const lv_img_dsc_t blue_ham_ham_mini_right = {
   .data = blue_ham_ham_mini_right_map,
 }; */
 
-const lv_img_dsc_t mentako_ya = {
+const lv_img_dsc_t Snoopy = {
   .header.cf = LV_IMG_CF_INDEXED_1BIT,
   .header.always_zero = 0,
   .header.reserved = 0,
-  .header.w = 90,
+  .header.w = 158,
   .header.h = 90,
-  .data_size = 1088,
-  .data = mentako_ya_map,
+  .data_size = 1808,
+  .data = Snoopy_map,
 };
 
 
@@ -146,7 +146,7 @@ int zmk_widget_ime_status_init(struct zmk_widget_ime_status *widget, lv_obj_t *p
 
     /* lv_canvas_draw_img(image_canvas, 0, 0, &blue_ham_ham_mini_left, &img_dsc);
     lv_canvas_draw_img(image_canvas, ILLUST_WIDTH, 0, &blue_ham_ham_mini_right, &img_dsc); */
-    lv_canvas_draw_img(image_canvas, 0, 0, &mentako_ya, &img_dsc);
+    lv_canvas_draw_img(image_canvas, 0, 0, &Snoopy, &img_dsc);
     lv_obj_align(image_canvas, LV_ALIGN_CENTER, 0, 0);
     /*
     for(int i=0; i<ILLUST_WIDTH; i++)
